@@ -6,6 +6,8 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @races_homepage = RacesHomepage.new
+    @race = Race.new
     @location = Location.find(params.fetch("id_to_display"))
 
     render("location_templates/show.html.erb")

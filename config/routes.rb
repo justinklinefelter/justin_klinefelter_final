@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/races/new", { :controller => "races", :action => "new_form" })
   post("/create_race", { :controller => "races", :action => "create_row" })
+  post("/create_race_from_location", { :controller => "races", :action => "create_row_from_location" })
 
   # READ
   get("/races", { :controller => "races", :action => "index" })
@@ -75,6 +76,8 @@ Rails.application.routes.draw do
   # CREATE
   get("/races_homepages/new", { :controller => "races_homepages", :action => "new_form" })
   post("/create_races_homepage", { :controller => "races_homepages", :action => "create_row" })
+  post("/create_races_homepage_from_location", { :controller => "races_homepages", :action => "create_row_from_location" })
+  post("/create_races_homepage_from_race", { :controller => "races_homepages", :action => "create_row_from_race" })
 
   # READ
   get("/races_homepages", { :controller => "races_homepages", :action => "index" })

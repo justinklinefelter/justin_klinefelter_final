@@ -6,6 +6,7 @@ class RacesController < ApplicationController
   end
 
   def show
+    @races_homepage = RacesHomepage.new
     @race = Race.find(params.fetch("id_to_display"))
 
     render("race_templates/show.html.erb")
@@ -28,6 +29,22 @@ class RacesController < ApplicationController
       @race.save
 
       redirect_back(:fallback_location => "/races", :notice => "Race created successfully.")
+    else
+      render("race_templates/new_form_with_errors.html.erb")
+    end
+  end
+
+  def create_row_from_location
+    @race = Race.new
+
+    @race.user_id = params.fetch("user_id")
+    @race.location_id = params.fetch("location_id")
+    @race.event_id = params.fetch("event_id")
+
+    if @race.valid?
+      @race.save
+
+      redirect_to("/locations/#{@race.location_id}", notice: "Race created successfully.")
     else
       render("race_templates/new_form_with_errors.html.erb")
     end

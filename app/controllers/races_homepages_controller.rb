@@ -33,6 +33,38 @@ class RacesHomepagesController < ApplicationController
     end
   end
 
+  def create_row_from_race
+    @races_homepage = RacesHomepage.new
+
+    @races_homepage.race_id = params.fetch("race_id")
+    @races_homepage.user_id = params.fetch("user_id")
+    @races_homepage.location_id = params.fetch("location_id")
+
+    if @races_homepage.valid?
+      @races_homepage.save
+
+      redirect_to("/races/#{@races_homepage.race_id}", notice: "RacesHomepage created successfully.")
+    else
+      render("races_homepage_templates/new_form_with_errors.html.erb")
+    end
+  end
+
+  def create_row_from_location
+    @races_homepage = RacesHomepage.new
+
+    @races_homepage.race_id = params.fetch("race_id")
+    @races_homepage.user_id = params.fetch("user_id")
+    @races_homepage.location_id = params.fetch("location_id")
+
+    if @races_homepage.valid?
+      @races_homepage.save
+
+      redirect_to("/locations/#{@races_homepage.location_id}", notice: "RacesHomepage created successfully.")
+    else
+      render("races_homepage_templates/new_form_with_errors.html.erb")
+    end
+  end
+
   def edit_form
     @races_homepage = RacesHomepage.find(params.fetch("prefill_with_id"))
 
