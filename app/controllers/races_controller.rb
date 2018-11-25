@@ -59,7 +59,7 @@ class RacesController < ApplicationController
   def update_row
     @race = Race.find(params.fetch("id_to_modify"))
 
-    @race.user_id = params.fetch("user_id")
+    
     @race.location_id = params.fetch("location_id")
     @race.event_id = params.fetch("event_id")
 
