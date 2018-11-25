@@ -17,9 +17,11 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <a href="/delete_race_from_city/<%= race.id %>">
-          Delete
-        </a>
+        <%if current_user == race.participant %>
+          <a href="/delete_race_from_location/<%= race.id %>">
+            Delete
+          </a>
+        <% end %>
         <!-- Delete link end -->
 
       </li>
