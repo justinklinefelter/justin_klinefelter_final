@@ -1,6 +1,6 @@
 class RacesHomepagesController < ApplicationController
   def index
-    @races_homepages = RacesHomepage.all
+    @races_homepages = RacesHomepage.page(params[:page]).per(10)
 
     render("races_homepage_templates/index.html.erb")
   end
