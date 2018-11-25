@@ -38,7 +38,11 @@
       </dt>
       <!-- Display user_id start -->
       <dd>
-        <%= @race.user_id %>
+        <% if @race.participant.present? %>
+          <a href="/users/<%= @race.user_id %>">
+            <%= @race.participant.email %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display user_id end -->
 
@@ -47,7 +51,11 @@
       </dt>
       <!-- Display location_id start -->
       <dd>
-        <%= @race.location_id %>
+        <% if @race.city.present? %>
+          <a href="/locations/<%= @race.location_id %>">
+            <%= @race.city.race_id %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display location_id end -->
 

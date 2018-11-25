@@ -62,13 +62,21 @@
 
         <!-- Display race.user_id start -->
         <td>
-          <%= race.participant.email %>
+          <% if race.participant.present? %>
+            <a href="/users/<%= race.participant.id %>">
+              <%= race.participant.email %>
+            </a>
+          <% end %>
         </td>
         <!-- Display race.user_id end -->
 
         <!-- Display race.location_id start -->
         <td>
-          <%= race.city.race_id %>
+          <% if race.city.present? %>
+            <a href="/locations/<%= race.city.id %>">
+              <%= race.city.race_id %>
+            </a>
+          <% end %>
         </td>
         <!-- Display race.location_id end -->
 

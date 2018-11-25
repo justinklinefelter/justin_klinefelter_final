@@ -62,19 +62,31 @@
 
         <!-- Display races_homepage.race_id start -->
         <td>
-          <%= races_homepage.race.user_id %>
+          <% if races_homepage.race.present? %>
+            <a href="/races/<%= races_homepage.race.id %>">
+              <%= races_homepage.race.user_id %>
+            </a>
+          <% end %>
         </td>
         <!-- Display races_homepage.race_id end -->
 
         <!-- Display races_homepage.user_id start -->
         <td>
-          <%= races_homepage.user.email %>
+          <% if races_homepage.user.present? %>
+            <a href="/users/<%= races_homepage.user.id %>">
+              <%= races_homepage.user.email %>
+            </a>
+          <% end %>
         </td>
         <!-- Display races_homepage.user_id end -->
 
         <!-- Display races_homepage.location_id start -->
         <td>
-          <%= races_homepage.location.race_id %>
+          <% if races_homepage.location.present? %>
+            <a href="/locations/<%= races_homepage.location.id %>">
+              <%= races_homepage.location.race_id %>
+            </a>
+          <% end %>
         </td>
         <!-- Display races_homepage.location_id end -->
 

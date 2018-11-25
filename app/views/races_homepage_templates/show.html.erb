@@ -34,7 +34,11 @@
       </dt>
       <!-- Display race_id start -->
       <dd>
-        <%= @races_homepage.race_id %>
+        <% if @races_homepage.race.present? %>
+          <a href="/races/<%= @races_homepage.race_id %>">
+            <%= @races_homepage.race.user_id %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display race_id end -->
 
@@ -43,7 +47,11 @@
       </dt>
       <!-- Display user_id start -->
       <dd>
-        <%= @races_homepage.user_id %>
+        <% if @races_homepage.user.present? %>
+          <a href="/users/<%= @races_homepage.user_id %>">
+            <%= @races_homepage.user.email %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display user_id end -->
 
@@ -52,7 +60,11 @@
       </dt>
       <!-- Display location_id start -->
       <dd>
-        <%= @races_homepage.location_id %>
+        <% if @races_homepage.location.present? %>
+          <a href="/locations/<%= @races_homepage.location_id %>">
+            <%= @races_homepage.location.race_id %>
+          </a>
+        <% end %>
       </dd>
       <!-- Display location_id end -->
 
