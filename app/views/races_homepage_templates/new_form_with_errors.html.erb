@@ -1,4 +1,3 @@
-<!-- Validation failure messages -->
 <% if @races_homepage.present? %>
   <% if @races_homepage.errors.any? %>
     <% @races_homepage.errors.full_messages.each do |message| %>
@@ -16,45 +15,31 @@
 
 <hr>
 
-<!-- Form races_homepage start -->
 <form action="/create_races_homepage" method="post">
-<!-- Form races_homepage end -->
 
-  <!-- Label and input for race_id start -->
   <div class="form-group">
     <label for="race_id">
       Race
     </label>
 
-    <!-- Input for race_id start -->
     <%= select_tag(:race_id, options_from_collection_for_select(Race.all, :id, :user_id, @races_homepage.race_id), :class => "form-control") %>
-    <!-- Input for race_id end -->
   </div>
-  <!-- Label and input for race_id end -->
 
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <label for="user_id">
       User
     </label>
 
-    <!-- Input for user_id start -->
     <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @races_homepage.user_id), :class => "form-control") %>
-    <!-- Input for user_id end -->
   </div>
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for location_id start -->
   <div class="form-group">
     <label for="location_id">
       Location
     </label>
 
-    <!-- Input for location_id start -->
     <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :race_id, @races_homepage.location_id), :class => "form-control") %>
-    <!-- Input for location_id end -->
   </div>
-  <!-- Label and input for location_id end -->
 
   <button class="btn btn-block btn-outline-secondary">
     Create races homepage

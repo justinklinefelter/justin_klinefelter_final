@@ -1,35 +1,22 @@
-<!-- Form races_homepage start -->
 <form action="/create_races_homepage_from_location" method="post">
-<!-- Form races_homepage end -->
 
-  <!-- Label and input for race_id start -->
   <div class="form-group">
     <label for="race_id">
       Race
     </label>
 
-    <!-- Input for race_id start -->
     <%= select_tag(:race_id, options_from_collection_for_select(Race.all, :id, :user_id, @races_homepage.race_id), :class => "form-control") %>
-    <!-- Input for race_id end -->
   </div>
-  <!-- Label and input for race_id end -->
 
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <label for="user_id">
       User
     </label>
 
-    <!-- Input for user_id start -->
     <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @races_homepage.user_id), :class => "form-control") %>
-    <!-- Input for user_id end -->
   </div>
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for location_id start -->
-  <!-- Input for location_id start -->
   <input type="hidden" name="location_id" value="<%= @location.id %>">
-  <!-- Input for location_id end -->
 
   <button class="btn btn-block btn-outline-secondary">
     Create races homepage

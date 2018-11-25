@@ -11,7 +11,6 @@
         </a>
       </div>
 
-      <!-- Edit link race start -->
       <div class="col">
         <% if current_user == @race.participant %>
           <a href="/races/<%= @race.id %>/edit" class="btn btn-block btn-sm btn-outline-secondary">
@@ -19,9 +18,7 @@
           </a>
         <% end %>
       </div>
-      <!-- Edit link race end -->
 
-      <!-- Delete link race start -->
       <div class="col">
         <% if current_user == @race.participant %>
           <a href="/delete_race/<%= @race.id %>" class="btn btn-block btn-sm btn-outline-secondary">
@@ -29,14 +26,12 @@
           </a>
         <% end %>
       </div>
-      <!-- Delete link race end -->
     </div>
 
     <dl>
       <dt>
         User
       </dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @race.participant.present? %>
           <a href="/users/<%= @race.user_id %>">
@@ -44,12 +39,10 @@
           </a>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
       <dt>
         Location
       </dt>
-      <!-- Display location_id start -->
       <dd>
         <% if @race.city.present? %>
           <a href="/locations/<%= @race.location_id %>">
@@ -57,42 +50,33 @@
           </a>
         <% end %>
       </dd>
-      <!-- Display location_id end -->
 
       <dt>
         Event
       </dt>
-      <!-- Display event_id start -->
       <dd>
         <%= @race.event_id %>
       </dd>
-      <!-- Display event_id end -->
 
       <dt>
         Created at
       </dt>
-      <!-- Display created_at start -->
       <dd>
         <%= time_ago_in_words(@race.created_at) %> ago
       </dd>
-      <!-- Display created_at end -->
 
       <dt>
         Updated at
       </dt>
-      <!-- Display updated_at start -->
       <dd>
         <%= time_ago_in_words(@race.updated_at) %> ago
       </dd>
-      <!-- Display updated_at end -->
     </dl>
   </div>
 </div>
 
-<!-- Show Page Customization starts -->
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <%= render partial: "race_templates/race_workouts_homepages" %>
   </div>
 </div>
-<!-- Show Page Customization end -->

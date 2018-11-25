@@ -10,17 +10,13 @@
   </div>
 </div>
 
-<!-- Ransack Code start -->
 <div class="row">
   <div class="col-md-12 mb-3">
     <%= render partial: "races_homepage_templates/races_homepages_search_form" %>
   </div>
 </div>
-<!-- Ransack Code end -->
 
-<!-- Location Map Code start -->
 
-<!-- Location Map Code end -->
 
 <hr>
 
@@ -58,13 +54,10 @@
 
       <% @races_homepages.each do |races_homepage| %>
       <tr>
-        <!-- Display races_homepage.id start -->
         <td>
           <%= races_homepage.id %>
         </td>
-        <!-- Display races_homepage.id end -->
 
-        <!-- Display races_homepage.race_id start -->
         <td>
           <% if races_homepage.race.present? %>
             <a href="/races/<%= races_homepage.race.id %>">
@@ -72,9 +65,7 @@
             </a>
           <% end %>
         </td>
-        <!-- Display races_homepage.race_id end -->
 
-        <!-- Display races_homepage.user_id start -->
         <td>
           <% if races_homepage.user.present? %>
             <a href="/users/<%= races_homepage.user.id %>">
@@ -82,9 +73,7 @@
             </a>
           <% end %>
         </td>
-        <!-- Display races_homepage.user_id end -->
 
-        <!-- Display races_homepage.location_id start -->
         <td>
           <% if races_homepage.location.present? %>
             <a href="/locations/<%= races_homepage.location.id %>">
@@ -92,19 +81,14 @@
             </a>
           <% end %>
         </td>
-        <!-- Display races_homepage.location_id end -->
 
-        <!-- Display races_homepage.created_at start -->
         <td>
           <%= time_ago_in_words(races_homepage.created_at) %> ago
         </td>
-        <!-- Display races_homepage.created_at end -->
 
-        <!-- Display races_homepage.updated_at start -->
         <td>
           <%= time_ago_in_words(races_homepage.updated_at) %> ago
         </td>
-        <!-- Display races_homepage.updated_at end -->
 
         <td>
           <a href="/races_homepages/<%= races_homepage.id %>">

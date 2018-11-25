@@ -1,4 +1,3 @@
-<!-- Validation failure messages -->
 <% if @race.present? %>
   <% if @race.errors.any? %>
     <% @race.errors.full_messages.each do |message| %>
@@ -16,39 +15,25 @@
 
 <hr>
 
-<!-- Form race start -->
 <form action="/create_race" method="post">
-<!-- Form race end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <input type="hidden" name="user_id" value="<%= current_user.id %>">
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for location_id start -->
   <div class="form-group">
     <label for="location_id">
       Location
     </label>
 
-    <!-- Input for location_id start -->
     <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :race_id, @race.location_id), :class => "form-control") %>
-    <!-- Input for location_id end -->
   </div>
-  <!-- Label and input for location_id end -->
 
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <label for="event_id">
       Event
     </label>
 
-    <!-- Input for event_id start -->
     <input type="text" id="event_id" name="event_id" class="form-control" value="<%= @race.event_id %>">
-    <!-- Input for event_id end -->
   </div>
-  <!-- Label and input for event_id end -->
 
   <button class="btn btn-block btn-outline-secondary">
     Create race
