@@ -4,6 +4,8 @@ RSpec.describe Race, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:workouts_homepages) }
+
     end
 
     describe "InDirect Associations" do
