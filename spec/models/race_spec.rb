@@ -4,6 +4,8 @@ RSpec.describe Race, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:city) }
+
     it { should belong_to(:participant) }
 
     it { should have_many(:workouts_homepages) }
