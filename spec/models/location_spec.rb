@@ -4,6 +4,8 @@ RSpec.describe Location, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:workouts_homepages) }
+
     it { should have_many(:races) }
 
     end
