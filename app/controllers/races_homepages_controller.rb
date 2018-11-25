@@ -1,6 +1,7 @@
 class RacesHomepagesController < ApplicationController
   def index
-    @races_homepages = RacesHomepage.page(params[:page]).per(10)
+    @q = RacesHomepage.ransack(params[:q])
+    @races_homepages = @q.result(:distinct => true).includes(:race, :user, :location).page(params[:page]).per(10)
 
     render("races_homepage_templates/index.html.erb")
   end

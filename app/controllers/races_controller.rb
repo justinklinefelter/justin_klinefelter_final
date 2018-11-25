@@ -10,7 +10,8 @@ class RacesController < ApplicationController
   end
 
   def index
-    @races = Race.page(params[:page]).per(10)
+    @q = Race.ransack(params[:q])
+    @races = @q.result(:distinct => true).includes(:workouts_homepages, :participant, :city).page(params[:page]).per(10)
 
     render("race_templates/index.html.erb")
   end
