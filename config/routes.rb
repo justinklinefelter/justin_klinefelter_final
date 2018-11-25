@@ -65,6 +65,8 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_race/:id_to_remove", { :controller => "races", :action => "destroy_row" })
+  get("/delete_race_from_city/:id_to_remove", { :controller => "races", :action => "destroy_row_from_city" })
+  get("/delete_race_from_participant/:id_to_remove", { :controller => "races", :action => "destroy_row_from_participant" })
 
   #------------------------------
 
@@ -84,6 +86,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_races_homepage/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row" })
+  get("/delete_races_homepage_from_location/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_location" })
+  get("/delete_races_homepage_from_user/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_user" })
+  get("/delete_races_homepage_from_race/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_race" })
 
   #------------------------------
 

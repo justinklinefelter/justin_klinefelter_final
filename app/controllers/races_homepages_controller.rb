@@ -55,6 +55,30 @@ class RacesHomepagesController < ApplicationController
     end
   end
 
+  def destroy_row_from_race
+    @races_homepage = RacesHomepage.find(params.fetch("id_to_remove"))
+
+    @races_homepage.destroy
+
+    redirect_to("/races/#{@races_homepage.race_id}", notice: "RacesHomepage deleted successfully.")
+  end
+
+  def destroy_row_from_user
+    @races_homepage = RacesHomepage.find(params.fetch("id_to_remove"))
+
+    @races_homepage.destroy
+
+    redirect_to("/users/#{@races_homepage.user_id}", notice: "RacesHomepage deleted successfully.")
+  end
+
+  def destroy_row_from_location
+    @races_homepage = RacesHomepage.find(params.fetch("id_to_remove"))
+
+    @races_homepage.destroy
+
+    redirect_to("/locations/#{@races_homepage.location_id}", notice: "RacesHomepage deleted successfully.")
+  end
+
   def destroy_row
     @races_homepage = RacesHomepage.find(params.fetch("id_to_remove"))
 

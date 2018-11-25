@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Workouts Homepages
+
+    <a data-toggle="collapse" href="#race_workouts_homepages_new_form">
+      Add races homepage
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @race.workouts_homepages.each do |races_homepage| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/races_homepages/<%= races_homepage.id %>">
+          <%= races_homepage.race_id %>
+        </a>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <a href="/delete_races_homepage_from_race/<%= races_homepage.id %>">
+          Delete
+        </a>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="race_workouts_homepages_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

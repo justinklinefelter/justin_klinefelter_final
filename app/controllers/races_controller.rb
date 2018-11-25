@@ -55,6 +55,22 @@ class RacesController < ApplicationController
     end
   end
 
+  def destroy_row_from_participant
+    @race = Race.find(params.fetch("id_to_remove"))
+
+    @race.destroy
+
+    redirect_to("/users/#{@race.user_id}", notice: "Race deleted successfully.")
+  end
+
+  def destroy_row_from_city
+    @race = Race.find(params.fetch("id_to_remove"))
+
+    @race.destroy
+
+    redirect_to("/locations/#{@race.location_id}", notice: "Race deleted successfully.")
+  end
+
   def destroy_row
     @race = Race.find(params.fetch("id_to_remove"))
 
