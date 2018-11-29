@@ -42,6 +42,17 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :user_id, "Race User" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :races_user_id_gteq, :class => "form-control", :placeholder => "Race User greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :races_user_id_lteq, :class => "form-control", :placeholder => "Race User less than or equal to" %>
+      </div>
+    </div>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>

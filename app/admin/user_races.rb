@@ -1,6 +1,6 @@
-ActiveAdmin.register RacesHomepage do
+ActiveAdmin.register UserRace do
 
- permit_params :race_id, :user_id, :location_id
+ permit_params :user_id, :race_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

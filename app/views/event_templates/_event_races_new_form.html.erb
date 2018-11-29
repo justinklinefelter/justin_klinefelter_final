@@ -1,10 +1,4 @@
-<h1>
-  Edit race #<%= @race.id %>
-</h1>
-
-<hr>
-
-<form action="/update_race/<%= @race.id %>" method="post">
+<form action="/create_race_from_event" method="post">
 
   <div class="form-group">
     <label for="user_id">
@@ -22,21 +16,9 @@
     <input type="text" id="location_id" name="location_id" class="form-control" value="<%= @race.location_id %>">
   </div>
 
-  <div class="form-group">
-    <label for="event_id">
-      Event
-    </label>
-
-    <%= select_tag(:event_id, options_from_collection_for_select(Event.all, :id, :created_at, @race.event_id), :class => "form-control") %>
-  </div>
+  <input type="hidden" name="event_id" value="<%= @event.id %>">
 
   <button class="btn btn-block btn-outline-secondary">
-    Update race
+    Create race
   </button>
 </form>
-
-<hr>
-
-<a href="/races">
-  Go back
-</a>

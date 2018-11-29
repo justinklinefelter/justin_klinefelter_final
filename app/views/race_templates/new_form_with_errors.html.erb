@@ -17,14 +17,20 @@
 
 <form action="/create_race" method="post">
 
-  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @race.user_id %>">
+  </div>
 
   <div class="form-group">
     <label for="location_id">
       Location
     </label>
 
-    <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :race_id, @race.location_id), :class => "form-control") %>
+    <input type="text" id="location_id" name="location_id" class="form-control" value="<%= @race.location_id %>">
   </div>
 
   <div class="form-group">
@@ -32,7 +38,7 @@
       Event
     </label>
 
-    <input type="text" id="event_id" name="event_id" class="form-control" value="<%= @race.event_id %>">
+    <%= select_tag(:event_id, options_from_collection_for_select(Event.all, :id, :created_at, @race.event_id), :class => "form-control") %>
   </div>
 
   <button class="btn btn-block btn-outline-secondary">

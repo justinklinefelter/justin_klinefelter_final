@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
-    Races
+    Users
   </div>
 
   <ul class="list-group list-group-flush">
-    <% @user.races.each do |race| %>
+    <% @race.users.each do |user| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <a href="/races/<%= race.id %>">
-          <%= race.user_id %>
+        <a href="/users/<%= user.id %>">
+          <%= user.email %>
         </a>
 
       </li>

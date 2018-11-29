@@ -1,7 +1,5 @@
-class RacesHomepage < ApplicationRecord
+class UserRace < ApplicationRecord
   # Direct associations
-
-  belongs_to :location
 
   belongs_to :user
 
