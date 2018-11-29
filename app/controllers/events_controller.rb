@@ -1,12 +1,13 @@
 class EventsController < ApplicationController
   def index
     @q = Event.ransack(params[:q])
-    @events = @q.result(:distinct => true).page(params[:page]).per(10)
+    @events = @q.result(:distinct => true).includes(:races).page(params[:page]).per(10)
 
     render("event_templates/index.html.erb")
   end
 
   def show
+    @race = Race.new
     @event = Event.find(params.fetch("id_to_display"))
 
     render("event_templates/show.html.erb")

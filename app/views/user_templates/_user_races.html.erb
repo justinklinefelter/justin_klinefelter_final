@@ -1,17 +1,13 @@
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     Races
-
-    <a data-toggle="collapse" href="#user_races_new_form">
-      Add race
-    </a>
   </div>
 
   <ul class="list-group list-group-flush">
     <% @user.races.each do |race| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
         <a href="/races/<%= race.id %>">
-          <%= race.user_id %>
+          <%= race.created_at %>
         </a>
 
       </li>
