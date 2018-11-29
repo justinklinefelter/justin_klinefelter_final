@@ -1,23 +1,18 @@
 class RacesController < ApplicationController
-  before_action :current_user_must_be_race_participant, :only => [:edit_form, :update_row, :destroy_row]
-
-  def current_user_must_be_race_participant
-    race = Race.find(params["id_to_display"] || params["prefill_with_id"] || params["id_to_modify"] || params["id_to_remove"])
-
-    unless current_user == race.participant
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = Race.ransack(params[:q])
-    @races = @q.result(:distinct => true).includes(:workouts_homepages, :participant, :city).page(params[:page]).per(10)
+    @races = @q.result(:distinct => true).includes(:user_races, :event, :users).page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@races.where.not(:location_id_latitude => nil)) do |race, marker|
+      marker.lat race.location_id_latitude
+      marker.lng race.location_id_longitude
+      marker.infowindow "<h5><a href='/races/#{race.id}'>#{race.user_id}</a></h5><small>#{race.location_id_formatted_address}</small>"
+    end
 
     render("race_templates/index.html.erb")
   end
 
   def show
-    @races_homepage = RacesHomepage.new
+    @user_race = UserRace.new
     @race = Race.find(params.fetch("id_to_display"))
 
     render("race_templates/show.html.erb")
@@ -45,7 +40,7 @@ class RacesController < ApplicationController
     end
   end
 
-  def create_row_from_location
+  def create_row_from_event
     @race = Race.new
 
     @race.user_id = params.fetch("user_id")
@@ -55,7 +50,7 @@ class RacesController < ApplicationController
     if @race.valid?
       @race.save
 
-      redirect_to("/locations/#{@race.location_id}", notice: "Race created successfully.")
+      redirect_to("/events/#{@race.event_id}", notice: "Race created successfully.")
     else
       render("race_templates/new_form_with_errors.html.erb")
     end
@@ -70,7 +65,7 @@ class RacesController < ApplicationController
   def update_row
     @race = Race.find(params.fetch("id_to_modify"))
 
-    
+    @race.user_id = params.fetch("user_id")
     @race.location_id = params.fetch("location_id")
     @race.event_id = params.fetch("event_id")
 
@@ -83,20 +78,12 @@ class RacesController < ApplicationController
     end
   end
 
-  def destroy_row_from_participant
+  def destroy_row_from_event
     @race = Race.find(params.fetch("id_to_remove"))
 
     @race.destroy
 
-    redirect_to("/users/#{@race.user_id}", notice: "Race deleted successfully.")
-  end
-
-  def destroy_row_from_city
-    @race = Race.find(params.fetch("id_to_remove"))
-
-    @race.destroy
-
-    redirect_to("/locations/#{@race.location_id}", notice: "Race deleted successfully.")
+    redirect_to("/events/#{@race.event_id}", notice: "Race deleted successfully.")
   end
 
   def destroy_row

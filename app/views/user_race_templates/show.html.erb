@@ -1,0 +1,66 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      User race #<%= @user_race.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/user_races" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/user_races/<%= @user_race.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit user race
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_user_race/<%= @user_race.id %>" class="btn btn-block btn-outline-secondary">
+          Delete user race
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <% if @user_race.user.present? %>
+          <a href="/users/<%= @user_race.user_id %>">
+            <%= @user_race.user.email %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Race
+      </dt>
+      <dd>
+        <% if @user_race.race.present? %>
+          <a href="/races/<%= @user_race.race_id %>">
+            <%= @user_race.race.user_id %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@user_race.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@user_race.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

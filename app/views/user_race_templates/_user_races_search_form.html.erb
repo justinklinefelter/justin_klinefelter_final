@@ -1,4 +1,4 @@
-<%= search_form_for @q, :class => collapse_search_form, :id => "races_homepages_filters" do |f| %>
+<%= search_form_for @q, :class => collapse_search_form, :id => "user_races_filters" do |f| %>
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
@@ -43,29 +43,29 @@
 
 
   <div class="form-group">
-    <%= f.label :user_email_cont, "User email contains" %>
-    <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+    <%= f.label :user_id, "Race User" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :race_user_id_gteq, :class => "form-control", :placeholder => "Race User greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :race_user_id_lteq, :class => "form-control", :placeholder => "Race User less than or equal to" %>
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :race_id, "Location Race" %>
-    <div class="row">
-      <div class='col-md-6 mb-1'>
-        <%= f.text_field :location_race_id_gteq, :class => "form-control", :placeholder => "Location Race greater than or equal to" %>
-      </div>
-      <div class='col-md-6'>
-        <%= f.text_field :location_race_id_lteq, :class => "form-control", :placeholder => "Location Race less than or equal to" %>
-      </div>
-    </div>
+    <%= f.label :user_email_cont, "User email contains" %>
+    <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
   </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-  <a href="/races_homepages" class="btn btn-outline-secondary btn-block mb-1">Clear filters</a>
+  <a href="/user_races" class="btn btn-outline-secondary btn-block mb-1">Clear filters</a>
 
 <% end %>
 
-<a class="btn btn-outline-secondary btn-block mb-1" data-toggle="collapse" href="#races_homepages_filters">
+<a class="btn btn-outline-secondary btn-block mb-1" data-toggle="collapse" href="#user_races_filters">
   Show filters
 </a>

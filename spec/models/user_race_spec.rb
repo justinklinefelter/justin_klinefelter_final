@@ -1,10 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe RacesHomepage, type: :model do
+RSpec.describe UserRace, type: :model do
   
     describe "Direct Associations" do
-
-    it { should belong_to(:location) }
 
     it { should belong_to(:user) }
 
