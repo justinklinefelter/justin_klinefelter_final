@@ -12,50 +12,51 @@
       </div>
 
       <div class="col">
-        <% if current_user == @race.participant %>
-          <a href="/races/<%= @race.id %>/edit" class="btn btn-block btn-sm btn-outline-secondary">
-            Edit race
-          </a>
-        <% end %>
+        <a href="/races/<%= @race.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit race
+        </a>
       </div>
 
       <div class="col">
-        <% if current_user == @race.participant %>
-          <a href="/delete_race/<%= @race.id %>" class="btn btn-block btn-sm btn-outline-secondary">
-            Delete race
-          </a>
-        <% end %>
+        <a href="/delete_race/<%= @race.id %>" class="btn btn-block btn-outline-secondary">
+          Delete race
+        </a>
       </div>
     </div>
 
     <dl>
       <dt>
-        User
-      </dt>
-      <dd>
-        <% if @race.participant.present? %>
-          <a href="/users/<%= @race.user_id %>">
-            <%= @race.participant.email %>
-          </a>
-        <% end %>
-      </dd>
-
-      <dt>
         Location
       </dt>
       <dd>
-        <% if @race.city.present? %>
-          <a href="/locations/<%= @race.location_id %>">
-            <%= @race.city.race_id %>
-          </a>
-        <% end %>
+        <div>
+          <%= render partial: "race_templates/one_photo_map" %>
+        </div>
       </dd>
 
       <dt>
         Event
       </dt>
       <dd>
-        <%= @race.event_id %>
+        <% if @race.event.present? %>
+          <a href="/events/<%= @race.event_id %>">
+            <%= @race.event.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>
+        Year
+      </dt>
+      <dd>
+        <%= @race.year_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @race.name %>
       </dd>
 
       <dt>
@@ -77,6 +78,12 @@
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
-    <%= render partial: "race_templates/race_workouts_homepages" %>
+    <%= render partial: "race_templates/race_user_races" %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <%= render partial: "race_templates/race_users" %>
   </div>
 </div>

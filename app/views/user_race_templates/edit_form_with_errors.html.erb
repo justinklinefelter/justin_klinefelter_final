@@ -1,0 +1,58 @@
+<% if @user_race.errors.any? %>
+  <% @user_race.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit user race #<%= @user_race.id %>
+</h1>
+
+<hr>
+
+<form action="/update_user_race/<%= @user_race.id %>" method="post">
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @user_race.user_id), :class => "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="race_id">
+      Race
+    </label>
+
+    <%= select_tag(:race_id, options_from_collection_for_select(Race.all, :id, :created_at, @user_race.race_id), :class => "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <label for="time">
+      Time
+    </label>
+
+    <input type="text" id="time" name="time" class="form-control" value="<%= @user_race.time %>">
+  </div>
+
+  <div class="form-group">
+    <label for="body">
+      Body
+    </label>
+
+    <input type="text" id="body" name="body" class="form-control" value="<%= @user_race.body %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update user race
+  </button>
+</form>
+
+<hr>
+
+<a href="/user_races">
+  Go back
+</a>
