@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "races_homepages#index"
+  root :to => "races#index"
   # Routes for the Event resource:
 
   # CREATE
@@ -21,22 +21,47 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  # Routes for the Location resource:
+  # Routes for the Comment resource:
 
   # CREATE
-  get("/locations/new", { :controller => "locations", :action => "new_form" })
-  post("/create_location", { :controller => "locations", :action => "create_row" })
+  get("/comments/new", { :controller => "comments", :action => "new_form" })
+  post("/create_comment", { :controller => "comments", :action => "create_row" })
+  post("/create_comment_from_user_race", { :controller => "comments", :action => "create_row_from_user_race" })
 
   # READ
-  get("/locations", { :controller => "locations", :action => "index" })
-  get("/locations/:id_to_display", { :controller => "locations", :action => "show" })
+  get("/comments", { :controller => "comments", :action => "index" })
+  get("/comments/:id_to_display", { :controller => "comments", :action => "show" })
 
   # UPDATE
-  get("/locations/:prefill_with_id/edit", { :controller => "locations", :action => "edit_form" })
-  post("/update_location/:id_to_modify", { :controller => "locations", :action => "update_row" })
+  get("/comments/:prefill_with_id/edit", { :controller => "comments", :action => "edit_form" })
+  post("/update_comment/:id_to_modify", { :controller => "comments", :action => "update_row" })
 
   # DELETE
-  get("/delete_location/:id_to_remove", { :controller => "locations", :action => "destroy_row" })
+  get("/delete_comment/:id_to_remove", { :controller => "comments", :action => "destroy_row" })
+  get("/delete_comment_from_race/:id_to_remove", { :controller => "comments", :action => "destroy_row_from_race" })
+  get("/delete_comment_from_commenter/:id_to_remove", { :controller => "comments", :action => "destroy_row_from_commenter" })
+
+  #------------------------------
+
+  # Routes for the User race resource:
+
+  # CREATE
+  get("/user_races/new", { :controller => "user_races", :action => "new_form" })
+  post("/create_user_race", { :controller => "user_races", :action => "create_row" })
+  post("/create_user_race_from_race", { :controller => "user_races", :action => "create_row_from_race" })
+
+  # READ
+  get("/user_races", { :controller => "user_races", :action => "index" })
+  get("/user_races/:id_to_display", { :controller => "user_races", :action => "show" })
+
+  # UPDATE
+  get("/user_races/:prefill_with_id/edit", { :controller => "user_races", :action => "edit_form" })
+  post("/update_user_race/:id_to_modify", { :controller => "user_races", :action => "update_row" })
+
+  # DELETE
+  get("/delete_user_race/:id_to_remove", { :controller => "user_races", :action => "destroy_row" })
+  get("/delete_user_race_from_user/:id_to_remove", { :controller => "user_races", :action => "destroy_row_from_user" })
+  get("/delete_user_race_from_race/:id_to_remove", { :controller => "user_races", :action => "destroy_row_from_race" })
 
   #------------------------------
 
@@ -54,7 +79,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/races/new", { :controller => "races", :action => "new_form" })
   post("/create_race", { :controller => "races", :action => "create_row" })
-  post("/create_race_from_location", { :controller => "races", :action => "create_row_from_location" })
+  post("/create_race_from_event", { :controller => "races", :action => "create_row_from_event" })
 
   # READ
   get("/races", { :controller => "races", :action => "index" })
@@ -66,32 +91,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get("/delete_race/:id_to_remove", { :controller => "races", :action => "destroy_row" })
-  get("/delete_race_from_city/:id_to_remove", { :controller => "races", :action => "destroy_row_from_city" })
-  get("/delete_race_from_participant/:id_to_remove", { :controller => "races", :action => "destroy_row_from_participant" })
-
-  #------------------------------
-
-  # Routes for the Races homepage resource:
-
-  # CREATE
-  get("/races_homepages/new", { :controller => "races_homepages", :action => "new_form" })
-  post("/create_races_homepage", { :controller => "races_homepages", :action => "create_row" })
-  post("/create_races_homepage_from_location", { :controller => "races_homepages", :action => "create_row_from_location" })
-  post("/create_races_homepage_from_race", { :controller => "races_homepages", :action => "create_row_from_race" })
-
-  # READ
-  get("/races_homepages", { :controller => "races_homepages", :action => "index" })
-  get("/races_homepages/:id_to_display", { :controller => "races_homepages", :action => "show" })
-
-  # UPDATE
-  get("/races_homepages/:prefill_with_id/edit", { :controller => "races_homepages", :action => "edit_form" })
-  post("/update_races_homepage/:id_to_modify", { :controller => "races_homepages", :action => "update_row" })
-
-  # DELETE
-  get("/delete_races_homepage/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row" })
-  get("/delete_races_homepage_from_location/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_location" })
-  get("/delete_races_homepage_from_user/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_user" })
-  get("/delete_races_homepage_from_race/:id_to_remove", { :controller => "races_homepages", :action => "destroy_row_from_race" })
+  get("/delete_race_from_event/:id_to_remove", { :controller => "races", :action => "destroy_row_from_event" })
 
   #------------------------------
 

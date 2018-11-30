@@ -4,13 +4,15 @@ RSpec.describe User, type: :model do
   
     describe "Direct Associations" do
 
-    it { should have_many(:workouts_homepages) }
+    it { should have_many(:comments) }
 
-    it { should have_many(:races) }
+    it { should have_many(:user_races) }
 
     end
 
     describe "InDirect Associations" do
+
+    it { should have_many(:races) }
 
     end
 

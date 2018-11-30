@@ -1,14 +1,18 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :workouts_homepages,
-             :class_name => "RacesHomepage",
+  has_many   :comments,
+             :foreign_key => "commenter_id",
              :dependent => :destroy
 
-  has_many   :races,
+  has_many   :user_races,
              :dependent => :destroy
 
   # Indirect associations
+
+  has_many   :races,
+             :through => :user_races,
+             :source => :race
 
   # Validations
 

@@ -16,7 +16,11 @@
   </div>
 </div>
 
-
+<div class="row mb-3">
+  <div class="col-md-12">
+    <%= render partial: "race_templates/all_photos_map" %>
+  </div>
+</div>
 
 <hr>
 
@@ -29,15 +33,19 @@
         </th>
 
         <th>
-          User
-        </th>
-
-        <th>
           Location
         </th>
 
         <th>
           Event
+        </th>
+
+        <th>
+          Year
+        </th>
+
+        <th>
+          Name
         </th>
 
         <th>
@@ -59,23 +67,23 @@
         </td>
 
         <td>
-          <% if race.participant.present? %>
-            <a href="/users/<%= race.participant.id %>">
-              <%= race.participant.email %>
+          <%= race.location_id %>
+        </td>
+
+        <td>
+          <% if race.event.present? %>
+            <a href="/events/<%= race.event.id %>">
+              <%= race.event.created_at %>
             </a>
           <% end %>
         </td>
 
         <td>
-          <% if race.city.present? %>
-            <a href="/locations/<%= race.city.id %>">
-              <%= race.city.race_id %>
-            </a>
-          <% end %>
+          <%= race.year_id %>
         </td>
 
         <td>
-          <%= race.event_id %>
+          <%= race.name %>
         </td>
 
         <td>
