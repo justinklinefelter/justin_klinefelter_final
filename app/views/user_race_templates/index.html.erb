@@ -1,0 +1,129 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All user races
+    </h1>
+
+    <a href="/user_races/new" class="btn btn-block btn-outline-secondary">
+      Add a new user race
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <%= render partial: "user_race_templates/user_races_search_form" %>
+  </div>
+</div>
+
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Race
+        </th>
+
+        <th>
+          Time
+        </th>
+
+        <th>
+          Body
+        </th>
+
+        <th>
+          Overall place
+        </th>
+
+        <th>
+          Age group place
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @user_races.each do |user_race| %>
+      <tr>
+        <td>
+          <%= user_race.id %>
+        </td>
+
+        <td>
+          <% if user_race.user.present? %>
+            <a href="/users/<%= user_race.user.id %>">
+              <%= user_race.user.email %>
+            </a>
+          <% end %>
+        </td>
+
+        <td>
+          <% if user_race.race.present? %>
+            <a href="/races/<%= user_race.race.id %>">
+              <%= user_race.race.created_at %>
+            </a>
+          <% end %>
+        </td>
+
+        <td>
+          <%= user_race.time %>
+        </td>
+
+        <td>
+          <%= user_race.body %>
+        </td>
+
+        <td>
+          <%= user_race.overall_place %>
+        </td>
+
+        <td>
+          <%= user_race.age_group_place %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(user_race.created_at) %> ago
+        </td>
+
+        <td>
+          <%= time_ago_in_words(user_race.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/user_races/<%= user_race.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <%= paginate @user_races, theme: "twitter-bootstrap-4" %>
+      </div>
+    </div>
+
+  </div>
+</div>

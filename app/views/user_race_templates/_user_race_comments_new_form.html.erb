@@ -1,0 +1,24 @@
+<form action="/create_comment_from_user_race" method="post">
+
+  <div class="form-group">
+    <label for="body">
+      Body
+    </label>
+
+    <input type="text" id="body" name="body" class="form-control" value="<%= @comment.body %>">
+  </div>
+
+  <div class="form-group">
+    <label for="commenter_id">
+      Commenter
+    </label>
+
+    <%= select_tag(:commenter_id, options_from_collection_for_select(User.all, :id, :email, @comment.commenter_id), :class => "form-control") %>
+  </div>
+
+  <input type="hidden" name="user_race_id" value="<%= @user_race.id %>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create comment
+  </button>
+</form>
